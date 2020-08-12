@@ -10,7 +10,7 @@ Christian Drosten's (a german virologist) guest article in the german newspaper
 Within that article he states, that everyone should write a contact-journal to
 help local health authorities detect covid clusters. To make this easier for me
 and my family, I decided to write a simple web-page where my wife and I can log
-our daily contacts quick and in a simple format.
+our daily contacts simple and quickly.
 
 ## Requirements?
 

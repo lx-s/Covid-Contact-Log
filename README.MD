@@ -1,7 +1,11 @@
 # :family: Covid-19 Contact-Log
 
-## :raised_hand: Pics or I stop reading!
+Covid-Contact-Log is a simple self-hosted log-tool for ...
+
+## :raised_hand: Wait! Pics or I stop reading!
 ![Screenshot](./raw/screenshot.png?raw=true "CCL Screenshot")
+
+Since we've got that out of the way~
 
 ## :thinking: Why?
 
@@ -53,7 +57,7 @@ To create user entries, please use the provided script in ```tools/create_user.p
 
 ## :milky_way: Languages
 
-This script is currently available in English and German.
+This script is currently available in :flag_en: English and German.
 If you find this little app useful and want to provide further
 translations, I'd be happy to add them.
 

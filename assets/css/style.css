@@ -49,6 +49,7 @@ header > div {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  align-items: flex-end;
 }
 
 header .page-title {
@@ -57,6 +58,8 @@ header .page-title {
 }
 
 header .meta-nav {
+  margin: 0;
+  padding: 0;
   list-style-type: none;
   text-align: right;
 }
@@ -93,11 +96,11 @@ footer {
   font-size: 20px;
 }
 
-
 input {
   border: 1px solid #bd976f;
   background-color: #fff;
   padding: 8px 20px;
+  -webkit-appearance: none;
 }
 
 .input-field {
@@ -225,6 +228,10 @@ input[type="submit"] {
 }
 
 @media screen and (max-width: 500px) {
+  .meta-nav {
+    font-size: 12px;
+  }
+
   h1 { font-size: 30px; }
   h2 { font-size: 22px; }
   h3 { font-size: 20px; }

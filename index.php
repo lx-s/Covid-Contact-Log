@@ -3,6 +3,10 @@
 
   require 'common.php';
 
+  if (!is_logged_in()) {
+    \header('location: ./login.php');
+  }
+
   $errors = [];
   $success = [];
 
@@ -55,9 +59,9 @@
     return $results;
   }
 
-  if (isset($_POST['add_entry'])) {
+  if (isset($_POST['do_add_entry'])) {
     $who = isset($_POST['who']) ? $_POST['who'] : '';
-    if (strlen($who) <= 1) {
+    if (\strlen($who) <= 1) {
       $errors[] = 'Please enter a name';
     } else {
       add_entry($who);
@@ -67,7 +71,7 @@
   $entries = get_entries(ENTRY_LOG_DAYS);
 
 ?><!doctype html>
-<html lang="de" dir="ltr">
+<html lang="<?php echo CCL_LANG; ?>" dir="<?php echo CCL_LANG_DIR; ?>">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -80,6 +84,11 @@
       <h1 class="page-title">
         <span class="emoji">&#128106;</span> <?php _t('page.title'); ?>
       </h1>
+      <?php if (!empty($cclUsers_) && is_logged_in()) : ?>
+        <ul class="meta-nav">
+          <li><a href="logout.php"><?php _t('nav.logout'); ?></a></li>
+        </ul>
+      <?php endif; ?>
     </div>
   </header>
 
@@ -106,7 +115,7 @@
         <label for="who"><?php _t('add_entry.who.label'); ?></label>
         <input id="who" name="who" type="text" value="" placeholder="<?php _t('add_entry.who.placeholder'); ?>" required>
       </div>
-      <input type="submit" name="add_entry" value="<?php _t('add_entry.add_btn'); ?>">
+      <input type="submit" name="do_add_entry" value="<?php _t('add_entry.add_btn'); ?>">
     </form>
   </div>
 

@@ -14,6 +14,10 @@ body {
   color: #404045;
 }
 
+code {
+  font-family: 'Consolas', 'Source Code Pro', 'Courier New', 'Courier', monospace;
+}
+
 h1, h2, h3, h4 {
   font-weight: bold;
 }
@@ -41,9 +45,35 @@ header {
   border-bottom: 2px solid #bd976f;
 }
 
+header > div {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
 header .page-title {
   margin: 0;
   padding: 0;
+}
+
+header .meta-nav {
+  list-style-type: none;
+  text-align: right;
+}
+
+header .meta-nav > li {
+  display: inline-block;
+}
+header .meta-nav > li:not(:last-child) {
+  margin-right: 10px;
+}
+header .meta-nav a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  padding: 4px 10px;
 }
 
 footer {
@@ -85,9 +115,11 @@ label {
   padding-right: 10px;
   flex-shrink: 0;
   flex-grow: 0;
+  min-width: 150px;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
   box-sizing: border-box;
   color: #919199;
   flex-shrink: 1;
@@ -95,7 +127,8 @@ input[type="text"] {
   width: 100%;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="password"]:focus {
   color: #404045;
 }
 
@@ -171,6 +204,24 @@ input[type="submit"] {
 .calendar-day {
   display: block;
   width: 150px;
+}
+
+/* Create-User */
+.generated-entry {
+  padding: 20px;
+  border: 2px dashed #404045;
+  margin: 20px 0;
+  font-size: 16px;
+}
+.generated-entry > code {
+  display: block;
+}
+.generated-entry > code.user-entry {
+  margin-left: 20px;
+}
+.generated-entry > code.muted {
+  color: #888;
+  pointer-events: none;
 }
 
 @media screen and (max-width: 500px) {

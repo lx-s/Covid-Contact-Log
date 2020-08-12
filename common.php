@@ -3,6 +3,8 @@
 
   namespace LXS\CCL;
 
+  require 'config.php';
+
   // ============================================================
   // Error reporting
 
@@ -10,20 +12,59 @@
   \ini_set('error_log', './error.log');
   \ini_set('display_errors', (CCL_ENV == 'live') ? '0' : '1');
 
-  require 'config.php';
-
-  require 'translations/'.CCL_LANG.'.php';
-
   // ============================================================
   // Translation
 
-  function _t($index, ...$params) {
+  require 'translations/'.CCL_LANG.'.php';
+
+  function _t($index, ...$params)
+  {
      global $lang_;
      $str = isset($lang_[$index]) ? $lang_[$index] : null;
      if ($str != null) {
-        $str = sprintf($str, $params);
+        $str = sprintf($str, ...$params);
      }
      echo ($str == null) ? $index.' not found' : $str;
+  }
+
+  /* returns translation */
+  function _tr($index, ...$params) {
+     global $lang_;
+     $str = isset($lang_[$index]) ? $lang_[$index] : null;
+     if ($str != null) {
+        $str = \sprintf($str, ...$params);
+     }
+     return ($str == null) ? $index.' not found' : $str;
+  }
+
+  // ============================================================
+  // User Management
+
+  \session_start(['cookie_lifetime' => CCL_SESSION_LIVETIME]);
+
+  function is_logged_in()
+  {
+    global $cclUsers_;
+    if (empty($cclUsers_)) {
+      return true;
+    }
+    if (isset($_SESSION['ccl-logged-in']) &&
+        $_SESSION['ccl-logged-in'] === 1) {
+      return true;
+    }
+    return false;
+  }
+
+  function login_user($username)
+  {
+    $_SESSION['ccl-logged-in'] = 1;
+    return true;
+  }
+
+  function logout_user()
+  {
+    $_SESSION['ccl-logged-in'] = 0;
+    unset($_SESSION['ccl-logged-in']);
   }
 
   // ============================================================

@@ -1,6 +1,6 @@
 # :family: Covid-19 Contact-Log
 
-Covid-Contact-Log is a simple self-hosted log-tool for ...
+Covid-Contact-Log is a simple, self-hosted log-tool for ...
 
 ## :raised_hand: Wait! Pics or I stop reading!
 ![Screenshot](./raw/screenshot.png?raw=true "CCL Screenshot")
@@ -9,7 +9,7 @@ Since we've got that out of the way~
 
 ## :thinking: Why?
 
-Covid-Contact-Log is a simple self-hosted log-tool for you and your household
+Covid-Contact-Log is a simple, self-hosted log-tool for you and your household
 to make a quick note when you've met someone. The idea for this tool came from
 Christian Drosten's (a german virologist) guest article in the german newspaper
 "Die Zeit", titled "Ein Plan für den Herbst".
@@ -70,5 +70,5 @@ This script is currently available in **English** and **German**.
 If you find this little app useful and want to provide further
 translations, I'd be happy to add them.
 
-To begin, just make a copy of ```translatations/en.php``` and exchange all
+To begin, just make a copy of ```translations/en.php``` and exchange all
 those english strings for the appropriate ones in your own beautiful language.

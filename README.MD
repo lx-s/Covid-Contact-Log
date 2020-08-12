@@ -1,6 +1,9 @@
 # Covid-19 Contact-Log
 
-## Why?
+## :raised_hand: Pics or I stop reading!
+![Screenshot](./raw/screenshot.png?raw=true "CCL Screenshot")
+
+## :thinking: Why?
 
 Covid-Contact-Log is a simple self-hosted log-tool for you and your household
 to make a quick note when you've met someone. The idea for this tool came from
@@ -12,7 +15,7 @@ help local health authorities detect covid clusters. To make this easier for me
 and my family, I decided to write a simple web-page where my wife and I can log
 our daily contacts simple and quickly.
 
-## Requirements?
+## :computer: Requirements?
 
 Currently:
 
@@ -20,7 +23,7 @@ Currently:
 * MySQL-Server (anything within the last 10 years should do)
 * WebServer (Apache, NGINX, or whatever floats your boat and supports PHP)
 
-## How to install
+## :floppy_disk: How to install
 
 Since this was written quickly and mostly for myself, there isn't
 a fancy install script that guides you through the setup.   
@@ -33,7 +36,7 @@ Nonetheless, setting this script up is not that hard:
    credentials (and everything else)
 5. Start logging like crazy!
 
-## User Management
+## :information_desk_person: User Management
 
 I've decided not to implement a complete user management, with
 separate log-entries for each user.  
@@ -48,7 +51,7 @@ their own password, but that's it. If you want to use this feature,
 add users to the user-array in your ```config.php```.
 To create user entries, please use the provided script in ```tools/create_user.php```.
 
-## Languages
+## :milky_way: Languages
 
 This script is currently available in English and German.
 If you find this little app useful and want to provide further

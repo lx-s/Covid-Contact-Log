@@ -19,6 +19,15 @@ help local health authorities detect covid clusters. To make this easier for me
 and my family, I decided to write a simple web-page where my wife and I can log
 our daily contacts simple and quickly.
 
+## :clipboard: Features
+
+ * Logs names and timestamps
+ * Also displays aforementioned logged names and timestamps
+ * Programmer-Art™ interface
+ * KISS access management
+ * Responsive interface
+ * Available in German and English.
+
 ## :computer: Requirements?
 
 Currently:
@@ -57,7 +66,7 @@ To create user entries, please use the provided script in ```tools/create_user.p
 
 ## :milky_way: Languages
 
-This script is currently available in :flag_en: English and German.
+This script is currently available in **English** and **German**.
 If you find this little app useful and want to provide further
 translations, I'd be happy to add them.
 

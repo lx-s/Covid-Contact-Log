@@ -1,4 +1,4 @@
-# Covid-19 Contact-Log
+# :family: Covid-19 Contact-Log
 
 ## :raised_hand: Pics or I stop reading!
 ![Screenshot](./raw/screenshot.png?raw=true "CCL Screenshot")

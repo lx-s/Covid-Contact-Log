@@ -29,7 +29,8 @@ Nonetheless, setting this script up is not that hard:
 ## User Management
 
 I've decided not to implement a complete user management, with
-separate entries. My reasoning for this: You and your kids/spouse/etc.
+separate log-entries for each user.  
+My reasoning for this: You and your kids/spouse/etc.
 live in the same household. So if one of you has met someone,
 the other one probably has too. And in the serious and unfortunate
 case that one of your hosehold contracted Covid, it shouldn't be to

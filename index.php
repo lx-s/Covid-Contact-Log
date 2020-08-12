@@ -72,12 +72,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <title><?php _t('page.title'); ?></title>
 </head>
 <body>
   <header>
     <div class="content-wrapper">
       <h1 class="page-title">
-        <span class="emoji">&#128106;</span> Covid-19 Cluster Log
+        <span class="emoji">&#128106;</span> <?php _t('page.title'); ?>
       </h1>
     </div>
   </header>
@@ -100,31 +101,31 @@
     <?php endif ;?>
 
     <form name="add_entry_form" action="./" method="post" accept-charset="utf-8">
-      <h2><span class="emoji">&#128278;</span> Have you met someone today?</h2>
+      <h2><span class="emoji">&#128278;</span> <?php _t('add_entry.title'); ?></h2>
       <div class="input-field">
-        <label for="who">Who? </label>
-        <input id="who" name="who" type="text" value="" placeholder="Name(s) of person(s)" required>
+        <label for="who"><?php _t('add_entry.who.label'); ?></label>
+        <input id="who" name="who" type="text" value="" placeholder="<?php _t('add_entry.who.placeholder'); ?>" required>
       </div>
-      <input type="submit" name="add_entry" value="Add">
+      <input type="submit" name="add_entry" value="<?php _t('add_entry.add_btn'); ?>">
     </form>
   </div>
 
   <div class="ccl-calendar content-wrapper">
     <h2>
       <span class="emoji">&#128197;</span>
-      Contacts within the last <?php echo ENTRY_LOG_DAYS; ?> days
+      <?php _t('log.title', ENTRY_LOG_DAYS); ?>
     </h2>
     <div class="ccl-entries">
    <?php
       if ($entries) {
          $lastMonth = 0;
          $lastDay   = 0;
-
          foreach ($entries as $e) {
             $date = \date_parse($e['time']);
+            $dateObj = \DateTime::createFromFormat('Y-m-d H:i:s', $e['time']);
+            $dateObj->setTimezone($dtZone_);
             if ($lastMonth != $date['month']) {
-               $dateObj   = \DateTime::createFromFormat('!m', $date['month']);
-               $monthName = $dateObj->format('F'); // March
+               $monthName = $dtFormaterMonth_->format($dateObj);
                if ($lastMonth != 0) { // Close previous div.month
                   echo '</ul></div>'; // day-list, day
                   echo '</div></div>'; // days, month
@@ -136,8 +137,7 @@
                $lastDay = 0; /* Reset */
             }
             if ($lastDay != $date['day']) {
-               $dateObj   = \DateTime::createFromFormat('!d', $date['day']);
-               $dayName = $dateObj->format('D'); // March
+               $dayName = $dtFormaterDay_->format($dateObj);
                if ($lastDay != 0) { // close previous div.day
                   echo '</ul></div>'; // day
                }
@@ -158,7 +158,7 @@
 
   <footer>
     <div class="content-wrapper">
-      &#128567; Let's fight together <em>(by following proper hygiene rules)</em>!
+      &#128567; <?php _t('footer.text'); ?>
     </div>
   </footer>
 </body>

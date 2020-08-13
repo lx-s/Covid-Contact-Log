@@ -88,6 +88,7 @@
 
   delete_old_entries();
   $entries = get_entries(ENTRY_LOG_DAYS);
+  $editMode = isset($_GET['mode']) ? $_GET['mode'] === 'edit' : false;
 
 ?><!doctype html>
 <html lang="<?php echo CCL_LANG; ?>" dir="<?php echo CCL_LANG_LANGDIR; ?>">
@@ -120,7 +121,7 @@
       </ul>
     <?php endif; ?>
 
-    <?php if (isset($_GET['entryAdded']) && ((int)$_GET['addEntry'] === 1)) : ?>
+    <?php if (isset($_GET['entryAdded']) && ((int)$_GET['entryAdded'] === 1)) : ?>
       <ul class="success-list">
         <li><?php _t('sql.success.added') ?></li>
       </ul>
@@ -136,11 +137,21 @@
     </form>
   </div>
 
-  <div class="ccl-calendar content-wrapper">
+  <div id="calendar" class="ccl-calendar content-wrapper">
     <h2>
       <span class="emoji">&#128197;</span>
       <?php _t('log.title', ENTRY_LOG_DAYS); ?>
+      <?php if ($editMode) : ?>
+        <span class="subtitle">Clicking on an entry allows you to delete it</span>
+      <?php endif; ?>
     </h2>
+    <div class="mode-switch">
+      <?php if ($editMode) : ?>
+        <a href="?mode="><span class="emoji">&#9998;</span> Bearbeitungsmodus beenden</a>
+      <?php else : ?>
+        <a href="?mode=edit"><span class="emoji">&#9998;</span> Einträge bearbeiten</a>
+      <?php endif; ?>
+    </div>
     <div class="ccl-entries">
    <?php
       if ($entries) {
@@ -172,7 +183,11 @@
                      .'<ul class="day-list">';
                $lastDay = $date['day'];
             }
-            echo '<li>'.$e['who'].'</li>';
+            if ($editMode) {
+              echo '<li><a class="delete-link" href="delete.php?entryId='.$e['entry_id'].'">'.$e['who'].'</a></li>';
+            } else {
+              echo '<li>'.$e['who'].'</li>';
+            }
          }
          if (!empty($entries)) {
             echo '</ul></div></div>';

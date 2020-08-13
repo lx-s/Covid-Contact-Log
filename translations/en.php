@@ -32,6 +32,12 @@
     'login.error.enter_information' => 'Please provide a username and a password',
     'login.error.wrong_credentials' => 'No matching user was found with the provided credentials',
 
+    // delete.php
+    'delete.title' => 'Delete entry',
+    'delete.confirm' => 'Do you really want to delete the following entry?',
+    'delete.btn' => 'Yes, delete!',
+    'delete.btn.decline' => 'No, please don\'t',
+
     // tools/create_user.php
     'tool.create_user.form.title' => 'Generate User Entry',
     'tool.create_user.form.username.label' => 'Username',

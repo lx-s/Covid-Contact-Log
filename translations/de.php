@@ -32,6 +32,12 @@
     'login.error.enter_information' => 'Bitte geben Sie einen Benutzernamen und ein Passwort ein',
     'login.error.wrong_credentials' => 'Kein passender Benutzer wurde zu diesen Eingaben gefunden',
 
+    // delete.php
+    'delete.title' => 'Eintrag Löschen',
+    'delete.confirm' => 'Möchten Sie den folgenden Eintrag wirklich löschen?',
+    'delete.btn.confirm' => 'Ja, löschen!',
+    'delete.btn.decline' => 'Nein, bitte nicht',
+
     // tools/create_user.php
     'tool.create_user.form.title' => 'Erzeuge neuen Benutzer-Eintrag',
     'tool.create_user.form.username.label' => 'Benutzername',

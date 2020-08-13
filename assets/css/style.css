@@ -159,6 +159,52 @@ input[type="submit"] {
   color: #fff;
   background-color: #bd976f;
   cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+input[type="submit"]:hover {
+  color: #bd976f;
+  background-color: #fff;
+}
+
+/* EDIT */
+
+a {
+  color: #bd976f;
+  transition: all 200ms ease-in-out;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #e9a863;
+}
+
+.ccl-calendar > h2 {
+  margin-bottom: 4px;
+  color: #bd976f;
+  border-color: #bd976f;
+}
+
+.mode-switch {
+  text-align: right;
+  margin-bottom: 4px;
+  margin-top: 14px;
+}
+
+.mode-switch > a {
+  padding: 4px 6px;
+  border: 1px solid #bd976f;
+  border-radius: 10px;
+}
+
+.delete-link {
+  border-bottom: 1px dashed #bd976f;
+}
+
+.edit-explanation {
+  margin: 20px 0 0 0;
+  color: #A1282C;
+  border: 1px solid #A1282C;
+  padding: 4px 6px;
 }
 
 /* CALENDAR */

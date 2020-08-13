@@ -141,17 +141,18 @@
     <h2>
       <span class="emoji">&#128197;</span>
       <?php _t('log.title', ENTRY_LOG_DAYS); ?>
-      <?php if ($editMode) : ?>
-        <span class="subtitle">Clicking on an entry allows you to delete it</span>
-      <?php endif; ?>
     </h2>
     <div class="mode-switch">
       <?php if ($editMode) : ?>
-        <a href="?mode="><span class="emoji">&#9998;</span> Bearbeitungsmodus beenden</a>
+        <a href="?mode="><span class="emoji">&#10060;</span> <?php _t('edit_mode.deactivate'); ?></a>
       <?php else : ?>
-        <a href="?mode=edit"><span class="emoji">&#9998;</span> Einträge bearbeiten</a>
+        <a href="?mode=edit#calendar"><span class="emoji">&#9998;</span> <?php _t('edit_mode.activate'); ?></a>
       <?php endif; ?>
     </div>
+    <?php if ($editMode) : ?>
+        <p class="edit-explanation"><?php _t('edit_mode.explanation'); ?></p>
+    <?php endif; ?>
+
     <div class="ccl-entries">
    <?php
       if ($entries) {

@@ -24,12 +24,32 @@
       if ($stmt->execute() === true) {
         $added = true;
       } else {
-        $errors[] = _tr('sql.error.insert').': <code>'.get_sql_error($db_).'</code>';
+        $errors[] = _tr('sql.error.insert').': <code>'.get_sql_error($stmt).'</code>';
       }
       $stmt->closeCursor();
     }
 
     return $added;
+  }
+
+  function delete_old_entries()
+  {
+    if (defined('KEEP_OLD_ENTRIES') && KEEP_OLD_ENTRIES === false) {
+      global $db_;
+      global $errors;
+      $sql = 'DELETE FROM '.DB_TABLE_PREFIX.'contact_log'
+            .' WHERE time < NOW() - INTERVAL :days DAY';
+      $stmt = $db_->prepare($sql);
+      if ($stmt === false) {
+        $errors[] = _tr('sql.error.prepare').': <code>'.get_sql_error($db_).'</code>';
+      } else {
+        $stmt->bindValue(':days', ENTRY_LOG_DAYS, \PDO::PARAM_INT);
+        if ($stmt->execute() === false) {
+          $errors[] = _tr('sql.error.query').': <code>'.get_sql_error($stmt).'</code>';
+        }
+        $stmt->closeCursor();
+      }
+    }
   }
 
   function get_entries($lastDays)
@@ -45,9 +65,9 @@
     if ($stmt === false) {
       $errors[] = _tr('sql.error.prepare').': <code>'.get_sql_error($db_).'</code>';
     } else {
-      $stmt->bindValue(':days', $lastDays);
+      $stmt->bindValue(':days', $lastDays, \PDO::PARAM_INT);
       if ($stmt->execute() === false || ($results = $stmt->fetchAll(\PDO::FETCH_ASSOC)) === false) {
-        $errors[] = _tr('sql.error.query').': <code>'.get_sql_error($db_).'</code>';
+        $errors[] = _tr('sql.error.query').': <code>'.get_sql_error($stmt).'</code>';
       }
       $stmt->closeCursor();
     }
@@ -66,6 +86,7 @@
     }
   }
 
+  delete_old_entries();
   $entries = get_entries(ENTRY_LOG_DAYS);
 
 ?><!doctype html>

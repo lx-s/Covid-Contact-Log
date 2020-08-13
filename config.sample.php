@@ -22,7 +22,10 @@
   // see contents of translations directory
   define('CCL_LANG', 'en');
 
-  define('ENTRY_LOG_DAYS', 3 * 7); // Last 3 weeks
+  // Last 3 weeks
+  define('ENTRY_LOG_DAYS', 3 * 7);
+  // When set to false, entries oder than ENTRY_LOG_DAYS are deleted
+  define('KEEP_OLD_ENTRIES', false);
 
   /* If the user array has at least one entry, this site
      can only be accessed by using proper credentials.

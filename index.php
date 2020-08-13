@@ -8,13 +8,11 @@
   }
 
   $errors = [];
-  $success = [];
 
   function add_entry($who)
   {
     global $db_;
     global $errors;
-    global $success;
     $added = false;
 
     $sql = 'INSERT INTO '.DB_TABLE_PREFIX.'contact_log(who) VALUES(:who)';
@@ -24,7 +22,6 @@
     } else {
       $stmt->bindValue(':who', $who, \PDO::PARAM_STR);
       if ($stmt->execute() === true) {
-        $success[] = _tr('sql.success.added');
         $added = true;
       } else {
         $errors[] = _tr('sql.error.insert').': <code>'.get_sql_error($db_).'</code>';
@@ -39,7 +36,6 @@
   {
     global $db_;
     global $errors;
-    global $success;
     $results = false;
 
     $sql = 'SELECT entry_id, time, who FROM '.DB_TABLE_PREFIX.'contact_log'
@@ -64,7 +60,9 @@
     if (\strlen($who) <= 1) {
       $errors[] = _tr('add_entry.error.noname');
     } else {
-      add_entry($who);
+      if (add_entry($who) === true) {
+        header('location: ./index.php?entryAdded=1');
+      }
     }
   }
 
@@ -101,11 +99,9 @@
       </ul>
     <?php endif; ?>
 
-    <?php if (!empty($success)) : ?>
+    <?php if (isset($_GET['entryAdded']) && ((int)$_GET['addEntry'] === 1)) : ?>
       <ul class="success-list">
-        <?php foreach ($success as $s) : ?>
-          <li><?php echo $s; ?></li>
-        <?php endforeach; ?>
+        <li><?php _t('sql.success.added') ?></li>
       </ul>
     <?php endif ;?>
 

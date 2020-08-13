@@ -4,12 +4,19 @@
   define('CCL_LANG_LANG_CODE', 'en_US');
 
   $lang_ = [
+    // General
+    'sql.error.prepare' => 'Failed to prepare SQL statement',
+    'sql.error.query' => 'Failed to query database',
+    'sql.error.insert' => 'Failed to insert entry into database',
+    'sql.success.added' => 'Entry added!',
+
     // index.php
     'page.title' => 'Covid Contact Log',
     'add_entry.title' => 'Have you met someone today?',
     'add_entry.who.label' => 'Who?',
     'add_entry.who.placeholder' => 'Name(s) of person(s)',
     'add_entry.add_btn' => 'Add',
+    'add_entry.error.noname' => 'Please enter a name',
     'log.title' => 'Contacts within the last %d days',
     'nav.logout' => 'Log out',
     'footer.text' => 'Let\'s fight together <em>(by following proper hygiene rules)</em>!',

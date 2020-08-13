@@ -81,6 +81,12 @@
             DB_PASSWORD
          );
 
+  function get_sql_error($db)
+  {
+    $errorMsg = $db->errorInfo();
+    return $errorMsg[2];
+  }
+
   // ============================================================
   // Time format
 

@@ -19,15 +19,15 @@
 
     $sql = 'INSERT INTO '.DB_TABLE_PREFIX.'contact_log(who) VALUES(:who)';
     $stmt = $db_->prepare($sql);
-    if ($stmt === FALSE) {
-      $errors[] = 'Failed to prepare SQL statement: <code>'.$db->errorInfo().'</code>';
+    if ($stmt === false) {
+      $errors[] = _tr('sql.error.prepare').': <code>'.get_sql_error($db_).'</code>';
     } else {
       $stmt->bindValue(':who', $who, \PDO::PARAM_STR);
       if ($stmt->execute() === true) {
-        $success[] = 'Entry added!';
+        $success[] = _tr('sql.success.added');
         $added = true;
       } else {
-        $errors[] = 'Failed to insert entry: <code>'.$db->errorInfo().'</code>';
+        $errors[] = _tr('sql.error.insert').': <code>'.get_sql_error($db_).'</code>';
       }
       $stmt->closeCursor();
     }
@@ -46,12 +46,12 @@
            .' WHERE time BETWEEN(NOW() - INTERVAL :days DAY) AND NOW()'
            .' ORDER BY time DESC';
     $stmt = $db_->prepare($sql);
-    if ($stmt === FALSE) {
-      $errors[] = 'Failed to prepare SQL statement: <code>'.$db->errorInfo().'</code>';
+    if ($stmt === false) {
+      $errors[] = _tr('sql.error.prepare').': <code>'.get_sql_error($db_).'</code>';
     } else {
       $stmt->bindValue(':days', $lastDays);
-      if (!$stmt->execute() || ($results = $stmt->fetchAll(\PDO::FETCH_ASSOC)) === FALSE) {
-        $errors[] = 'Failed to query database: <code>'.$db->errorInfo().'</code>';
+      if ($stmt->execute() === false || ($results = $stmt->fetchAll(\PDO::FETCH_ASSOC)) === false) {
+        $errors[] = _tr('sql.error.query').': <code>'.get_sql_error($db_).'</code>';
       }
       $stmt->closeCursor();
     }
@@ -62,7 +62,7 @@
   if (isset($_POST['do_add_entry'])) {
     $who = isset($_POST['who']) ? $_POST['who'] : '';
     if (\strlen($who) <= 1) {
-      $errors[] = 'Please enter a name';
+      $errors[] = _tr('add_entry.error.noname');
     } else {
       add_entry($who);
     }
@@ -167,7 +167,7 @@
 
   <footer>
     <div class="content-wrapper">
-      &#128567; <?php _t('footer.text'); ?>
+      <span class="emoji">&#128567;</span> <?php _t('footer.text'); ?>
     </div>
   </footer>
 </body>

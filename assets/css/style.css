@@ -77,6 +77,8 @@ header .meta-nav a {
   border: 1px solid #fff;
   border-radius: 10px;
   padding: 4px 10px;
+  min-width: 50px;
+  text-align: center;
 }
 
 footer {
@@ -86,6 +88,24 @@ footer {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
+.error-list,
+.success-list {
+  list-style-type: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+}
+.error-list {
+  border: 2px solid #9E2810;
+  background-color: #A1282C;
+}
+
+.success-list {
+  border: 2px solid #465207;
+  background-color: #73C94F;
+}
+
 
 /* FORM */
 
@@ -99,8 +119,9 @@ footer {
 input {
   border: 1px solid #bd976f;
   background-color: #fff;
-  padding: 8px 20px;
+  padding: 10px 20px;
   -webkit-appearance: none;
+  font-size: 14px;
 }
 
 .input-field {
@@ -124,15 +145,11 @@ label {
 input[type="text"],
 input[type="password"] {
   box-sizing: border-box;
-  color: #919199;
+  color: #404045;
   flex-shrink: 1;
   flex-grow: 1;
   width: 100%;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus {
-  color: #404045;
+  font-size: 16px;
 }
 
 input[type="submit"] {
@@ -182,6 +199,7 @@ input[type="submit"] {
 }
 .day-list > li:not(:last-child)::after {
   content: ',';
+  padding-right: 4px;
 }
 
 .month > h3,

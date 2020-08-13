@@ -7,7 +7,7 @@
   define('DB_NAME', '');
   define('DB_PASSWORD', '');
   define('DB_CHARSET', 'utf8');
-  define('DB_TABLE_PREFIX', 'ccl');
+  define('DB_TABLE_PREFIX', 'ccl_');
 
   define('CCL_SESSION_LIVETIME', 3 * 86400); // 3 days
 

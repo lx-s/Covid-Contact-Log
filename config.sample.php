@@ -21,7 +21,6 @@
 
   // see contents of translations directory
   define('CCL_LANG', 'en');
-  define('CCL_LANG_DIR', 'ltr'); // or 'rtl' for right-to-left
 
   define('ENTRY_LOG_DAYS', 3 * 7); // Last 3 weeks
 

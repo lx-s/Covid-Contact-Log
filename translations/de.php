@@ -1,7 +1,8 @@
 <?php
   // Language: German
 
-  define('CCL_LANG_LANG_CODE', 'de_DE');
+  define('CCL_LANG_LANGCODE', 'de_DE');
+  define('CCL_LANG_LANGDIR', 'ltr');
 
   $lang_ = [
     // General

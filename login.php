@@ -28,7 +28,7 @@
   }
 
 ?><!doctype html>
-<html lang="<?php echo CCL_LANG; ?>" dir="<?php echo CCL_LANG_DIR; ?>">
+<html lang="<?php echo CCL_LANG; ?>" dir="<?php echo CCL_LANG_LANGDIR; ?>">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">

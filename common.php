@@ -93,7 +93,7 @@
   $dtZone_ = new \DateTimeZone(CCL_TIMEZONE);
 
   $dtFormaterDay_ = new \IntlDateFormatter(
-    CCL_LANG_LANG_CODE,
+    CCL_LANG_LANGCODE,
     \IntlDateFormatter::FULL,
     \IntlDateFormatter::FULL,
     CCL_TIMEZONE,
@@ -102,7 +102,7 @@
   );
 
   $dtFormaterMonth_ = new \IntlDateFormatter(
-    CCL_LANG_LANG_CODE,
+    CCL_LANG_LANGCODE,
     \IntlDateFormatter::FULL,
     \IntlDateFormatter::FULL,
     CCL_TIMEZONE,

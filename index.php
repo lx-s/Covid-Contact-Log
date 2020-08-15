@@ -82,9 +82,9 @@
     $when = isset($_POST['when']) ? $_POST['when'] : '';
     $who = isset($_POST['who']) ? $_POST['who'] : '';
     if (\strlen($when) != 4+1+2+1+2) {
-      $errors[] = _tr('add_entry.error.nodate');
+      $errors[] = _tr('main.add_entry.error.nodate');
     } else if (\strlen($who) <= 1) {
-      $errors[] = _tr('add_entry.error.noname');
+      $errors[] = _tr('main.add_entry.error.noname');
     } else {
       if (add_entry($when, $who) === true) {
         header('location: ./index.php?entryAdded=1');
@@ -134,16 +134,16 @@
     <?php endif ;?>
 
     <form name="add_entry_form" action="./" method="post" accept-charset="utf-8">
-      <h2><span class="emoji">&#128278;</span> <?php _t('add_entry.title'); ?></h2>
+      <h2><span class="emoji">&#128278;</span> <?php _t('main.add_entry.title'); ?></h2>
       <div class="input-field">
-        <label for="when"><?php _t('add_entry.when.label'); ?></label>
+        <label for="when"><?php _t('main.add_entry.when.label'); ?></label>
         <input id="when" name="when" type="date" value="<?php echo date('Y-m-d'); ?>" required>
       </div>
       <div class="input-field">
-        <label for="who"><?php _t('add_entry.who.label'); ?></label>
-        <input id="who" name="who" type="text" value="" placeholder="<?php _t('add_entry.who.placeholder'); ?>" required>
+        <label for="who"><?php _t('main.add_entry.who.label'); ?></label>
+        <input id="who" name="who" type="text" value="" placeholder="<?php _t('main.add_entry.who.placeholder'); ?>" required>
       </div>
-      <input type="submit" name="do_add_entry" value="<?php _t('add_entry.add_btn'); ?>">
+      <input type="submit" name="do_add_entry" value="<?php _t('main.add_entry.add_btn'); ?>">
     </form>
   </div>
 
@@ -154,13 +154,13 @@
     </h2>
     <div class="mode-switch">
       <?php if ($editMode) : ?>
-        <a href="?mode="><span class="emoji">&#10060;</span> <?php _t('edit_mode.deactivate'); ?></a>
+        <a href="?mode="><span class="emoji">&#10060;</span> <?php _t('main.edit_mode.deactivate'); ?></a>
       <?php else : ?>
-        <a href="?mode=edit#calendar"><span class="emoji">&#9998;</span> <?php _t('edit_mode.activate'); ?></a>
+        <a href="?mode=edit#calendar"><span class="emoji">&#9998;</span> <?php _t('main.edit_mode.activate'); ?></a>
       <?php endif; ?>
     </div>
     <?php if ($editMode) : ?>
-        <p class="edit-explanation"><?php _t('edit_mode.explanation'); ?></p>
+        <p class="edit-explanation"><?php _t('main.edit_mode.explanation'); ?></p>
     <?php endif; ?>
 
     <div class="ccl-entries">

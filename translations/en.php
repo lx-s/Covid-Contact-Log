@@ -6,26 +6,26 @@
 
   $lang_ = [
     // General
+    'page.title' => 'Covid Contact Log',
+    'nav.logout' => 'Log out',
+    'footer.text' => 'Let\'s fight together <em>(by following proper hygiene rules)</em>!',
     'sql.error.prepare' => 'Failed to prepare SQL statement',
     'sql.error.query' => 'Failed to query database',
     'sql.error.insert' => 'Failed to insert entry into database',
     'sql.success.added' => 'Entry added!',
 
     // index.php
-    'page.title' => 'Covid Contact Log',
-    'add_entry.title' => 'Have you met someone today?',
-    'add_entry.who.label' => 'Who?',
-    'add_entry.who.placeholder' => 'Name(s) of person(s)',
-    'add_entry.when.label' => 'When?',
-    'add_entry.add_btn' => 'Add',
-    'add_entry.error.noname' => 'Please enter a name',
-    'add_entry.error.nodate' => 'Please enter a date',
-    'edit_mode.activate' => 'Edit entries',
-    'edit_mode.deactivate' => 'Stop editting entries',
-    'edit_mode.explanation' => 'Clicking on an entry allows you to delete it',
-    'log.title' => 'Contacts within the last %d days',
-    'nav.logout' => 'Log out',
-    'footer.text' => 'Let\'s fight together <em>(by following proper hygiene rules)</em>!',
+    'main.add_entry.title' => 'Met someone today?',
+    'main.add_entry.who.label' => 'Who?',
+    'main.add_entry.who.placeholder' => 'Name(s) of person(s)',
+    'main.add_entry.when.label' => 'When?',
+    'main.add_entry.add_btn' => 'Add',
+    'main.add_entry.error.noname' => 'Please enter a name',
+    'main.add_entry.error.nodate' => 'Please enter a date',
+    'main.edit_mode.activate' => 'Edit entries',
+    'main.edit_mode.deactivate' => 'Stop editting entries',
+    'main.edit_mode.explanation' => 'Clicking on an entry allows you to delete it',
+    'main.log.title' => 'Contacts within the last %d days',
 
     // login.php
     'login.title' => 'Login',

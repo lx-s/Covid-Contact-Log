@@ -6,26 +6,26 @@
 
   $lang_ = [
     // General
+    'page.title' => 'Covid Kontakt Protokoll',
+    'nav.logout' => 'Ausloggen',
+    'footer.text' => 'Zusammenhalten <em>(indem man den Hygieneregeln folgt)</em>!',
     'sql.error.prepare' => 'Fehler beim Vorbereiten des SQL-Ausdrucks',
     'sql.error.query' => 'Fehler beim Abfragen der Datenbank',
     'sql.error.insert' => 'Fehler beim Hinzufügen des Eintrags',
     'sql.success.added' => 'Eintrag hinzugefügt!',
 
     // index.php
-    'page.title' => 'Covid Kontakt Protokoll',
-    'add_entry.title' => 'Heute jemanden getroffen?',
-    'add_entry.who.label' => 'Wen?',
-    'add_entry.who.placeholder' => 'Name(n) der Person(en)',
-    'add_entry.when.label' => 'Wann?',
-    'add_entry.add_btn' => 'Speichern',
-    'add_entry.error.noname' => 'Bitte geben sie einen Namen ein',
-    'add_entry.error.nodate' => 'Bitte geben sie ein Datum ein',
-    'edit_mode.activate' => 'Einträge bearbeiten',
-    'edit_mode.deactivate' => 'Bearbeitungsmodus beenden',
-    'edit_mode.explanation' => 'Auf einen Eintrag klicken um ihn zu löschen.',
-    'log.title' => 'Kontakte innerhalb der letzten %d Tage',
-    'nav.logout' => 'Ausloggen',
-    'footer.text' => 'Zusammenhalten <em>(indem man den Hygieneregeln folgt)</em>!',
+    'main.add_entry.title' => 'Jemanden getroffen?',
+    'main.add_entry.who.label' => 'Wen?',
+    'main.add_entry.who.placeholder' => 'Name(n) der Person(en)',
+    'main.add_entry.when.label' => 'Wann?',
+    'main.add_entry.add_btn' => 'Speichern',
+    'main.add_entry.error.noname' => 'Bitte geben sie einen Namen ein',
+    'main.add_entry.error.nodate' => 'Bitte geben sie ein Datum ein',
+    'main.edit_mode.activate' => 'Einträge bearbeiten',
+    'main.edit_mode.deactivate' => 'Bearbeitungsmodus beenden',
+    'main.edit_mode.explanation' => 'Auf einen Eintrag klicken um ihn zu löschen.',
+    'main.log.title' => 'Kontakte innerhalb der letzten %d Tage',
 
     // login.php
     'login.title' => 'Anmelden',

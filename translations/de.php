@@ -15,6 +15,7 @@
     'sql.success.added' => 'Eintrag hinzugefügt!',
 
     // index.php
+    'main.title' => 'Index',
     'main.add_entry.title' => 'Jemanden getroffen?',
     'main.add_entry.who.label' => 'Wen?',
     'main.add_entry.who.placeholder' => 'Name(n) der Person(en)',

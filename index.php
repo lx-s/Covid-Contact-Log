@@ -1,138 +1,35 @@
 <?php
    namespace LXS\CCL;
 
-  require 'common.php';
+  require_once 'common.php';
 
-  if (!is_logged_in()) {
-    \header('location: ./login.php');
-  }
-
-  $errors = [];
-
-  function add_entry($date, $who)
-  {
-    global $db_;
-    global $errors;
-    $added = false;
-
-    $when = $date.' '.date('H:i:s');
-
-    $sql = 'INSERT INTO '.DB_TABLE_PREFIX.'contact_log(time, who) VALUES(:when, :who)';
-    $stmt = $db_->prepare($sql);
-    if ($stmt === false) {
-      $errors[] = _tr('sql.error.prepare').': <code>'.get_sql_error($db_).'</code>';
-    } else {
-      $stmt->bindValue(':when', $when, \PDO::PARAM_STR);
-      $stmt->bindValue(':who', $who, \PDO::PARAM_STR);
-      if ($stmt->execute() === true) {
-        $added = true;
-      } else {
-        $errors[] = _tr('sql.error.insert').': <code>'.get_sql_error($stmt).'</code>';
-      }
-      $stmt->closeCursor();
-    }
-
-    return $added;
-  }
-
-  function delete_old_entries()
-  {
-    if (defined('KEEP_OLD_ENTRIES') && KEEP_OLD_ENTRIES === false) {
-      global $db_;
-      global $errors;
-      $sql = 'DELETE FROM '.DB_TABLE_PREFIX.'contact_log'
-            .' WHERE time < NOW() - INTERVAL :days DAY';
-      $stmt = $db_->prepare($sql);
-      if ($stmt === false) {
-        $errors[] = _tr('sql.error.prepare').': <code>'.get_sql_error($db_).'</code>';
-      } else {
-        $stmt->bindValue(':days', ENTRY_LOG_DAYS, \PDO::PARAM_INT);
-        if ($stmt->execute() === false) {
-          $errors[] = _tr('sql.error.query').': <code>'.get_sql_error($stmt).'</code>';
-        }
-        $stmt->closeCursor();
-      }
-    }
-  }
-
-  function get_entries($lastDays)
-  {
-    global $db_;
-    global $errors;
-    $results = false;
-
-    $sql = 'SELECT entry_id, time, who FROM '.DB_TABLE_PREFIX.'contact_log'
-           .' WHERE time BETWEEN(NOW() - INTERVAL :days DAY) AND NOW()'
-           .' ORDER BY time DESC';
-    $stmt = $db_->prepare($sql);
-    if ($stmt === false) {
-      $errors[] = _tr('sql.error.prepare').': <code>'.get_sql_error($db_).'</code>';
-    } else {
-      $stmt->bindValue(':days', $lastDays, \PDO::PARAM_INT);
-      if ($stmt->execute() === false || ($results = $stmt->fetchAll(\PDO::FETCH_ASSOC)) === false) {
-        $errors[] = _tr('sql.error.query').': <code>'.get_sql_error($stmt).'</code>';
-      }
-      $stmt->closeCursor();
-    }
-
-    return $results;
-  }
+  check_login();
 
   if (isset($_POST['do_add_entry'])) {
     $when = isset($_POST['when']) ? $_POST['when'] : '';
     $who = isset($_POST['who']) ? $_POST['who'] : '';
     if (\strlen($when) != 4+1+2+1+2) {
-      $errors[] = _tr('main.add_entry.error.nodate');
+      $errors_[] = _tr('main.add_entry.error.nodate');
     } else if (\strlen($who) <= 1) {
-      $errors[] = _tr('main.add_entry.error.noname');
+      $errors_[] = _tr('main.add_entry.error.noname');
     } else {
-      if (add_entry($when, $who) === true) {
+      if (db\add_entry($when, $who) === true) {
         header('location: ./index.php?entryAdded=1');
       }
     }
   }
 
-  delete_old_entries();
-  $entries = get_entries(ENTRY_LOG_DAYS);
+  db\delete_old_entries();
   $editMode = isset($_GET['mode']) ? $_GET['mode'] === 'edit' : false;
+  $entries = db\get_entries(ENTRY_LOG_DAYS);
 
-?><!doctype html>
-<html lang="<?php echo CCL_LANG; ?>" dir="<?php echo CCL_LANG_LANGDIR; ?>">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <title><?php _t('page.title'); ?></title>
-</head>
-<body>
-  <header>
-    <div class="content-wrapper">
-      <h1 class="page-title">
-      <a href="./index.php"><span class="emoji">&#128106;</span> <?php _t('page.title'); ?></a>
-      </h1>
-      <?php if (!empty($cclUsers_) && is_logged_in()) : ?>
-        <ul class="meta-nav">
-          <li><a href="logout.php"><?php _t('nav.logout'); ?></a></li>
-        </ul>
-      <?php endif; ?>
-    </div>
-  </header>
+  if (isset($_GET['entryAdded']) && (int)$_GET['entryAdded'] == 1) {
+    $successes_[] = _tr('sql.success.added');
+  }
 
+  print_header(_tr('main.title'));
+?>
   <div class="ccv-form content-wrapper">
-    <?php if (!empty($errors)) : ?>
-      <ul class="error-list">
-        <?php foreach ($errors as $e) : ?>
-          <li><?php echo $e; ?></li>
-        <?php endforeach; ?>
-      </ul>
-    <?php endif; ?>
-
-    <?php if (isset($_GET['entryAdded']) && ((int)$_GET['entryAdded'] === 1)) : ?>
-      <ul class="success-list">
-        <li><?php _t('sql.success.added') ?></li>
-      </ul>
-    <?php endif ;?>
-
     <form name="add_entry_form" action="./" method="post" accept-charset="utf-8">
       <h2><span class="emoji">&#128278;</span> <?php _t('main.add_entry.title'); ?></h2>
       <div class="input-field">
@@ -150,7 +47,7 @@
   <div id="calendar" class="ccl-calendar content-wrapper">
     <h2>
       <span class="emoji">&#128197;</span>
-      <?php _t('log.title', ENTRY_LOG_DAYS); ?>
+      <?php _t('main.log.title', ENTRY_LOG_DAYS); ?>
     </h2>
     <div class="mode-switch">
       <?php if ($editMode) : ?>
@@ -208,10 +105,6 @@
     </div>
   </div>
 
-  <footer>
-    <div class="content-wrapper">
-      <span class="emoji">&#128567;</span> <?php _t('footer.text'); ?>
-    </div>
-  </footer>
-</body>
-</html>
+<?php
+  print_footer();
+?>

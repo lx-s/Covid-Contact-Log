@@ -3,7 +3,10 @@
 
   namespace LXS\CCL;
 
-  require 'config.php';
+  require_once 'config.php';
+  require_once 'inc/db.inc.php';
+  require_once 'inc/header.inc.php';
+  require_once 'inc/footer.inc.php';
 
   // ============================================================
   // Error reporting
@@ -67,25 +70,16 @@
     unset($_SESSION['ccl-logged-in']);
   }
 
+  function check_login()
+  {
+    if (!is_logged_in()) {
+      \header('location: ./login.php');
+    }
+  }
+
   // ============================================================
   // Database
-
-  $db_ = new \PDO(
-      sprintf('mysql:host=%s;dbname=%s;port=%s;charset=%s',
-               DB_HOST,
-               DB_NAME,
-               DB_PORT,
-               DB_CHARSET
-            ),
-            DB_USER,
-            DB_PASSWORD
-         );
-
-  function get_sql_error($db)
-  {
-    $errorMsg = $db->errorInfo();
-    return $errorMsg[2];
-  }
+  $db_ = db\open_db();
 
   // ============================================================
   // Time format
@@ -109,3 +103,9 @@
     \IntlDateFormatter::GREGORIAN,
     'MMMM'
   );
+
+  // ============================================================
+  // Notifications
+
+  $errors_ = [];
+  $successes_ = [];

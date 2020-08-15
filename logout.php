@@ -1,7 +1,7 @@
 <?php
    namespace LXS\CCL;
 
-   require 'common.php';
+   require_once 'common.php';
 
    logout_user();
 

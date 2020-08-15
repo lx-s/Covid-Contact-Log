@@ -18,6 +18,16 @@ code {
   font-family: 'Consolas', 'Source Code Pro', 'Courier New', 'Courier', monospace;
 }
 
+a {
+  color: #bd976f;
+  transition: all 200ms ease-in-out;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #e9a863;
+}
+
 h1, h2, h3, h4 {
   font-weight: bold;
 }
@@ -52,6 +62,42 @@ header > div {
   align-items: flex-end;
 }
 
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  padding: 8px 20px;
+  min-width: 50px;
+  text-align: center;
+  transition: all 200ms ease-in;
+}
+
+.btn.btn-primary {
+  color: #fff;
+  background-color: #bd976f;
+  border: 1px solid #bd976f;
+}
+
+.btn.btn-light {
+  color: #bd976f;
+  border: 1px solid #bd976f;
+}
+.btn.btn-light:hover {
+  color: #fff;
+  background-color: #bd976f;
+}
+
+.btn.btn-light.dark-bg {
+  color: #fff;
+  border: 1px solid #fff;
+}
+.btn.btn-light.dark-bg:hover {
+  color: #bd976f;
+  border: 1px solid #fff;
+  background-color: #fff;
+}
+
 header .page-title {
   margin: 0;
   padding: 0;
@@ -73,16 +119,6 @@ header .meta-nav > li {
 }
 header .meta-nav > li:not(:last-child) {
   margin-right: 10px;
-}
-header .meta-nav a {
-  display: block;
-  color: #fff;
-  text-decoration: none;
-  border: 1px solid #fff;
-  border-radius: 10px;
-  padding: 4px 10px;
-  min-width: 50px;
-  text-align: center;
 }
 
 footer {
@@ -159,30 +195,15 @@ input[type="password"] {
 }
 
 input[type="submit"] {
-  display: inline-block;
-  border-radius: 10px;
-  padding: 10px 40px;
-  color: #fff;
-  background-color: #bd976f;
   cursor: pointer;
-  transition: all 200ms ease-in-out;
 }
+
 input[type="submit"]:hover {
   color: #bd976f;
   background-color: #fff;
 }
 
 /* EDIT */
-
-a {
-  color: #bd976f;
-  transition: all 200ms ease-in-out;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #e9a863;
-}
 
 .ccl-calendar > h2 {
   margin-bottom: 4px;

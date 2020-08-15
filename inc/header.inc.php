@@ -30,7 +30,7 @@
       </h1>
       <?php if (!empty($cclUsers_) && is_logged_in()) : ?>
         <ul class="meta-nav">
-          <li><a href="logout.php"><?php _t('nav.logout'); ?></a></li>
+          <li><a class="btn btn-light dark-bg" href="logout.php"><?php _t('nav.logout'); ?></a></li>
         </ul>
       <?php endif; ?>
     </div>

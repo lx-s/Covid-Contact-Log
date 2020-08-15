@@ -49,7 +49,7 @@
         <input id="password" name="password" type="password"
                placeholder="<?php _t('login.form.password.label'); ?>" required>
       </div>
-      <input type="submit" name="do_login"
+      <input class="btn btn-primary" type="submit" name="do_login"
              value="<?php _t('login.form.login.btn'); ?>">
     </form>
   </div>

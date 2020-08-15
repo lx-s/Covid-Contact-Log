@@ -40,7 +40,7 @@
         <label for="who"><?php _t('main.add_entry.who.label'); ?></label>
         <input id="who" name="who" type="text" value="" placeholder="<?php _t('main.add_entry.who.placeholder'); ?>" required>
       </div>
-      <input type="submit" name="do_add_entry" value="<?php _t('main.add_entry.add_btn'); ?>">
+      <input class="btn btn-primary" type="submit" name="do_add_entry" value="<?php _t('main.add_entry.add_btn'); ?>">
     </form>
   </div>
 
@@ -51,9 +51,13 @@
     </h2>
     <div class="mode-switch">
       <?php if ($editMode) : ?>
-        <a href="?mode="><span class="emoji">&#10060;</span> <?php _t('main.edit_mode.deactivate'); ?></a>
+        <a class="btn btn-light" href="?mode=">
+          <span class="emoji">&#10060;</span> <?php _t('main.edit_mode.deactivate'); ?>
+        </a>
       <?php else : ?>
-        <a href="?mode=edit#calendar"><span class="emoji">&#9998;</span> <?php _t('main.edit_mode.activate'); ?></a>
+        <a class="btn btn-light" href="?mode=edit#calendar">
+          <span class="emoji">&#9998;</span> <?php _t('main.edit_mode.activate'); ?>
+        </a>
       <?php endif; ?>
     </div>
     <?php if ($editMode) : ?>
@@ -61,7 +65,7 @@
     <?php endif; ?>
 
     <div class="ccl-entries">
-   <?php
+    <?php
       if ($entries) {
          $lastMonth = 0;
          $lastDay   = 0;

@@ -41,7 +41,7 @@
         <li><?php echo $entry['who']; ?></li>
         <li><?php echo $entry['time']; ?></li>
       </ul>
-      <p><input type="submit" name="do_delete" value="<?php _t('delete.btn.confirm'); ?>"></p>
+      <p><input class="btn btn-primary" type="submit" name="do_delete" value="<?php _t('delete.btn.confirm'); ?>"></p>
       <p><a href="./index.php?mode=edit#calendar"><?php _t('delete.btn.decline'); ?></a></p>
     </form>
   </div>

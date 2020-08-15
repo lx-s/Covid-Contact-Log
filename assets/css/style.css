@@ -57,6 +57,10 @@ header .page-title {
   padding: 0;
 }
 
+header .page-title > a {
+  color: #404045;
+}
+
 header .meta-nav {
   margin: 0;
   padding: 0;
@@ -271,6 +275,18 @@ a:hover {
 .calendar-day {
   display: block;
   width: 150px;
+}
+
+.day-date {
+  display: inline-block;
+  min-width: 20px;
+  margin: 0 4px;
+  text-align: right;
+}
+
+.day-name {
+  color: #666;
+  font-size: 16px;
 }
 
 /* Create-User */

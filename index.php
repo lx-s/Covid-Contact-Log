@@ -102,7 +102,7 @@
   <header>
     <div class="content-wrapper">
       <h1 class="page-title">
-        <span class="emoji">&#128106;</span> <?php _t('page.title'); ?>
+		  <a href="./index.php"><span class="emoji">&#128106;</span> <?php _t('page.title'); ?></a>
       </h1>
       <?php if (!empty($cclUsers_) && is_logged_in()) : ?>
         <ul class="meta-nav">
@@ -180,7 +180,7 @@
                   echo '</ul></div>'; // day
                }
                echo '<div class="day">'
-                     .'<h4><span class="calendar-day">'.$dayName.', '.$date['day'].'</span></h4>'
+                     .'<h4><div class="calendar-day"><span class="day-date">'.$date['day'].'</span> <span class="day-name">'.$dayName.'</span></div></h4>'
                      .'<ul class="day-list">';
                $lastDay = $date['day'];
             }

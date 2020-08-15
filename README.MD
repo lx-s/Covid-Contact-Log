@@ -39,7 +39,7 @@ Currently:
 ## :floppy_disk: How to install
 
 Since this was written quickly and mostly for myself, there isn't
-a fancy install script that guides you through the setup.   
+a fancy install script that guides you through the setup.
 Nonetheless, setting this script up is not that hard:
 
 1. Create a database
@@ -49,10 +49,15 @@ Nonetheless, setting this script up is not that hard:
    credentials (and everything else)
 5. Start logging like crazy!
 
+## :floppy_disk: How to upgrade
+
+To upgrade a installation, delete all files **except** your `config.php`.
+Afterwards unzip this app into the directory of your ```config.php```.
+
 ## :information_desk_person: User Management
 
 I've decided not to implement a complete user management, with
-separate log-entries for each user.  
+separate log-entries for each user.
 My reasoning for this: You and your kids/spouse/etc.
 live in the same household. So if one of you has met someone,
 the other one probably has too. And in the serious and unfortunate

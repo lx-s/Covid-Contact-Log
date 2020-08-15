@@ -121,6 +121,7 @@ footer {
 }
 
 input {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
   border: 1px solid #bd976f;
   background-color: #fff;
   padding: 10px 20px;
@@ -146,6 +147,7 @@ label {
   min-width: 150px;
 }
 
+input[type="date"],
 input[type="text"],
 input[type="password"] {
   box-sizing: border-box;

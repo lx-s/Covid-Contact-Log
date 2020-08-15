@@ -9,17 +9,20 @@
 
   $errors = [];
 
-  function add_entry($who)
+  function add_entry($date, $who)
   {
     global $db_;
     global $errors;
     $added = false;
 
-    $sql = 'INSERT INTO '.DB_TABLE_PREFIX.'contact_log(who) VALUES(:who)';
+    $when = $date.' '.date('H:i:s');
+
+    $sql = 'INSERT INTO '.DB_TABLE_PREFIX.'contact_log(time, who) VALUES(:when, :who)';
     $stmt = $db_->prepare($sql);
     if ($stmt === false) {
       $errors[] = _tr('sql.error.prepare').': <code>'.get_sql_error($db_).'</code>';
     } else {
+      $stmt->bindValue(':when', $when, \PDO::PARAM_STR);
       $stmt->bindValue(':who', $who, \PDO::PARAM_STR);
       if ($stmt->execute() === true) {
         $added = true;
@@ -76,11 +79,14 @@
   }
 
   if (isset($_POST['do_add_entry'])) {
+    $when = isset($_POST['when']) ? $_POST['when'] : '';
     $who = isset($_POST['who']) ? $_POST['who'] : '';
-    if (\strlen($who) <= 1) {
+    if (\strlen($when) != 4+1+2+1+2) {
+      $errors[] = _tr('add_entry.error.nodate');
+    } else if (\strlen($who) <= 1) {
       $errors[] = _tr('add_entry.error.noname');
     } else {
-      if (add_entry($who) === true) {
+      if (add_entry($when, $who) === true) {
         header('location: ./index.php?entryAdded=1');
       }
     }
@@ -102,7 +108,7 @@
   <header>
     <div class="content-wrapper">
       <h1 class="page-title">
-		  <a href="./index.php"><span class="emoji">&#128106;</span> <?php _t('page.title'); ?></a>
+      <a href="./index.php"><span class="emoji">&#128106;</span> <?php _t('page.title'); ?></a>
       </h1>
       <?php if (!empty($cclUsers_) && is_logged_in()) : ?>
         <ul class="meta-nav">
@@ -129,6 +135,10 @@
 
     <form name="add_entry_form" action="./" method="post" accept-charset="utf-8">
       <h2><span class="emoji">&#128278;</span> <?php _t('add_entry.title'); ?></h2>
+      <div class="input-field">
+        <label for="when"><?php _t('add_entry.when.label'); ?></label>
+        <input id="when" name="when" type="date" value="<?php echo date('Y-m-d'); ?>" required>
+      </div>
       <div class="input-field">
         <label for="who"><?php _t('add_entry.who.label'); ?></label>
         <input id="who" name="who" type="text" value="" placeholder="<?php _t('add_entry.who.placeholder'); ?>" required>

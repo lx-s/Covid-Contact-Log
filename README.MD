@@ -42,7 +42,7 @@ Since this was written quickly and mostly for myself, there isn't
 a fancy install script that guides you through the setup.
 Nonetheless, setting this script up is not that hard:
 
-### Debian (lxc container behind reverse proxy - ssl handled by revproxy)###
+### Debian (lxc container behind reverse proxy - ssl handled by revproxy)
 ```
 
 apt update && apt install libapache2-mod-php7.3 php7.3-intl php7.3-mysql mariadb-server pwgen

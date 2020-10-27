@@ -1,7 +1,7 @@
 <?php
    namespace LXS\CCL;
 
-  require 'common.php';
+  require '../common.php';
 ?><!doctype html>
 <html lang="<?php echo CCL_LANG; ?>" dir="<?php echo CCL_LANG_LANGDIR; ?>">
 <head>

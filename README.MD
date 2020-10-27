@@ -42,7 +42,14 @@ Since this was written quickly and mostly for myself, there isn't
 a fancy install script that guides you through the setup.
 Nonetheless, setting this script up is not that hard:
 
-### Debian (lxc container behind reverse proxy - ssl handled by revproxy)
+1. Create a database
+2. Import the schema found at ```install/schema.sql```
+3. Unzip the app into a directory of your choice
+4. Copy ```config.sample.php``` to ```config.php``` and enter your database
+   credentials (and everything else)
+5. Start logging like crazy!
+
+### Example: Installing on Debian (LXC container behind reverse proxy - ssl handled by revproxy)
 ```
 
 apt update && apt install libapache2-mod-php7.3 php7.3-intl php7.3-mysql mariadb-server pwgen
@@ -75,12 +82,6 @@ a2ensite coronalog && apachectl configtest && systemctl reload apache2
 pass=$(pwgen -s 16 1) && echo -n "${pass}" | sha256sum && echo "user password to go into \$cclUsers_ is ${pass}"
 ```
 
-1. Create a database
-2. Import the schema found at ```install/schema.sql```
-3. Unzip the app into a directory of your choice
-4. Copy ```config.sample.php``` to ```config.php``` and enter your database
-   credentials (and everything else)
-5. Start logging like crazy!
 
 ## :floppy_disk: How to upgrade
 

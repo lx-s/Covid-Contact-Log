@@ -9,15 +9,15 @@ Since we've got that out of the way~
 
 ## :thinking: Why?
 
-Covid-Contact-Log is a simple, self-hosted log-tool for you and your household
-to make a quick note when you've met someone. The idea for this tool came from
-Christian Drosten's (a german virologist) guest article in the german newspaper
+Covid-Contact-Log is a simple, self hosted log tool for you and your household
+to make a quick note of who you met when. The idea for this tool came from
+a guest article of the german virologist Christian Drosten in the german newspaper
 "Die Zeit", titled "Ein Plan für den Herbst".
 
-Within that article he states, that everyone should write a contact-journal to
+Within that article he states that everyone should write a contact-journal to
 help local health authorities detect covid clusters. To make this easier for me
-and my family, I decided to write a simple web-page where my wife and I can log
-our daily contacts simple and quickly.
+and my family, I decided to write a simple web page where my wife and I can easily
+log our daily contacts quickly.
 
 ## :clipboard: Features
 
@@ -41,6 +41,39 @@ Currently:
 Since this was written quickly and mostly for myself, there isn't
 a fancy install script that guides you through the setup.
 Nonetheless, setting this script up is not that hard:
+
+### Debian (lxc container behind reverse proxy - ssl handled by revproxy)
+```
+
+apt update && apt install libapache2-mod-php7.3 php7.3-intl php7.3-mysql mariadb-server pwgen
+# now either unzip release or use the latest dev state to /var/www/html
+# i choose git
+apt install git
+cd /var/www/html
+git clone https://github.com/lx-s/Covid-Contact-Log.git
+cd /var/www/html/Covid-Contact-Log/
+mysql -e "CREATE DATABASE corona;"
+pass=$(pwgen -s 16 1)
+mysql -e "CREATE OR REPLACE USER 'corolog' IDENTIFIED BY '${pass}';" && mysql -e "GRANT ALL ON corona.* TO 'corolog';"
+mysql -u corolog -p${pass} corona < /opt/Covid-Contact-Log/install/schema.sql && echo "DB installed, random DB Password set & configured"
+if [ ! -f config.php ]; then
+  sed -re "s/(.*'DB_USER', ')/\1corolog/g" config.sample.php \
+  | sed -re "s/(.*'DB_NAME', ')/\1corona/g" \
+  | sed -re "s/(.*'DB_PASSWORD', ')/\1${pass}/g" > config.php
+fi
+
+echo "
+<VirtualHost *:80>
+        ServerName your.domain.name
+        ServerAdmin your@email
+        DocumentRoot /var/www/html/Covid-Contact-Log/
+</VirtualHost>
+" > /etc/apache2/sites-available/coronalog.conf
+a2ensite coronalog && apachectl configtest && systemctl reload apache2
+
+# user password:
+pass=$(pwgen -s 16 1) && echo -n "${pass}" | sha256sum && echo "user password to go into \$cclUsers_ is ${pass}"
+```
 
 1. Create a database
 2. Import the schema found at ```install/schema.sql```

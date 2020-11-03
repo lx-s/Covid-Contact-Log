@@ -50,7 +50,7 @@ h4 { font-size: 18px; }
 
 header {
   color: #000;
-  padding: 20px 0;
+  padding: 12px 0;
   background-color: #e2c09c;
   border-bottom: 2px solid #bd976f;
 }
@@ -101,6 +101,7 @@ header > div {
 header .page-title {
   margin: 0;
   padding: 0;
+  font-size: 30px;
 }
 
 header .page-title > a {
@@ -285,7 +286,7 @@ input[type="submit"]:hover {
   display: block;
   border: 1px solid #404045;
   padding: 20px;
-  width: 80px;
+  width: 110px;
   min-height: 60px;
   word-wrap: break-word;
   text-align: center;

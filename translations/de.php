@@ -12,10 +12,12 @@
     'sql.error.prepare' => 'Fehler beim Vorbereiten des SQL-Ausdrucks',
     'sql.error.query' => 'Fehler beim Abfragen der Datenbank',
     'sql.error.insert' => 'Fehler beim Hinzufügen des Eintrags',
+    'sql.error.update' => 'Fehler beim Aktualisieren des Eintrags',
     'sql.success.added' => 'Eintrag hinzugefügt!',
 
     // index.php
     'main.title' => 'Index',
+    'main.export_as_csv' => 'Export as CSV',
     'main.add_entry.title' => 'Jemanden getroffen?',
     'main.add_entry.who.label' => 'Wen?',
     'main.add_entry.who.placeholder' => 'Name(n) der Person(en)',
@@ -43,6 +45,12 @@
     'delete.confirm' => 'Möchten Sie den folgenden Eintrag wirklich löschen?',
     'delete.btn.confirm' => 'Ja, löschen!',
     'delete.btn.decline' => 'Nein, bitte nicht',
+
+    // edit.php
+    'edit.title' => 'Eintrag bearbeiten',
+    'edit.intro' => 'Hier kann der angelegten Eintrag bearbeitet werden.',
+    'edit.btn.confirm' => 'Speichern',
+    'edit.btn.decline' => 'Abbrechen',
 
     // tools/create_user.php
     'tool.create_user.form.title' => 'Erzeuge neuen Benutzer-Eintrag',

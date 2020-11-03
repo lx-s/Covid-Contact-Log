@@ -50,6 +50,9 @@
       <?php _t('main.log.title', ENTRY_LOG_DAYS); ?>
     </h2>
     <div class="mode-switch">
+      <a class="btn btn-light" href="csv.php">
+         <span class="emoji">&#8615;</span> <?php _t('main.export_as_csv'); ?>
+      </a>
       <?php if ($editMode) : ?>
         <a class="btn btn-light" href="?mode=">
           <span class="emoji">&#10060;</span> <?php _t('main.edit_mode.deactivate'); ?>
@@ -104,7 +107,6 @@
          if (!empty($entries)) {
             echo '</ul></div></div>';
          }
-
       } ?>
     </div>
   </div>

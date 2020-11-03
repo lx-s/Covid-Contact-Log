@@ -12,10 +12,12 @@
     'sql.error.prepare' => 'Failed to prepare SQL statement',
     'sql.error.query' => 'Failed to query database',
     'sql.error.insert' => 'Failed to insert entry into database',
+    'sql.error.update' => 'Failed to update entry',
     'sql.success.added' => 'Entry added!',
 
     // index.php
     'main.title' => 'Index',
+    'main.export_as_csv' => 'Als CSV exportieren',
     'main.add_entry.title' => 'Met someone today?',
     'main.add_entry.who.label' => 'Who?',
     'main.add_entry.who.placeholder' => 'Name(s) of person(s)',
@@ -43,6 +45,12 @@
     'delete.confirm' => 'Do you really want to delete the following entry?',
     'delete.btn' => 'Yes, delete!',
     'delete.btn.decline' => 'No, please don\'t',
+
+    // edit.php
+    'edit.title' => 'Edit entry',
+    'edit.intro' => 'Here you may edit this entry.',
+    'edit.btn.confirm' => 'Save',
+    'edit.btn.decline' => 'Cancel',
 
     // tools/create_user.php
     'tool.create_user.form.title' => 'Generate User Entry',

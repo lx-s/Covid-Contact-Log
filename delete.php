@@ -42,7 +42,7 @@
         <li><?php echo $entry['time']; ?></li>
       </ul>
       <p><input class="btn btn-primary" type="submit" name="do_delete" value="<?php _t('delete.btn.confirm'); ?>"></p>
-      <p><a href="./index.php?mode=edit#calendar"><?php _t('delete.btn.decline'); ?></a></p>
+      <p><a class="btn btn-light" href="./index.php?mode=edit#calendar"><?php _t('delete.btn.decline'); ?></a></p>
     </form>
   </div>
 <?php

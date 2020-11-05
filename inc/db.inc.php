@@ -34,14 +34,47 @@
     $sql = 'INSERT INTO '.DB_TABLE_PREFIX.'contact_log(time, who) VALUES(:when, :who)';
     $stmt = $db_->prepare($sql);
     if ($stmt === false) {
-      $errors_[] = _tr('sql.error.prepare').': <code>'.get_sql_error($db_).'</code>';
+      $errors_[] = \LXS\CCL\_t('sql.error.prepare').': <code>'.get_sql_error($db_).'</code>';
     } else {
       $stmt->bindValue(':when', $when, \PDO::PARAM_STR);
       $stmt->bindValue(':who', $who, \PDO::PARAM_STR);
       if ($stmt->execute() === true) {
         $added = true;
       } else {
-        $errors_[] = _tr('sql.error.insert').': <code>'.get_sql_error($stmt).'</code>';
+        $errors_[] = \LXS\CCL\_t('sql.error.insert').': <code>'.get_sql_error($stmt).'</code>';
+      }
+      $stmt->closeCursor();
+    }
+
+    return $added;
+  }
+
+  function edit_entry($entryId, $date, $time, $who)
+  {
+    global $db_;
+    global $errors_;
+    $added = false;
+
+    $when = $date.' '.$time;
+
+    $dateObj = \DateTime::createFromFormat('Y-m-d H:i:s', $when);
+    if ($dateObj === FALSE) {
+      $errors_[] = \LXS\CCL\_t('sql.error.invalid.date');
+      return false;
+    }
+
+    $sql = 'UPDATE '.DB_TABLE_PREFIX.'contact_log SET time=:when, who=:who WHERE entry_id=:id';
+    $stmt = $db_->prepare($sql);
+    if ($stmt === false) {
+      $errors_[] = \LXS\CCL\_t('sql.error.prepare').': <code>'.get_sql_error($db_).'</code>';
+    } else {
+      $stmt->bindValue(':when', $when, \PDO::PARAM_STR);
+      $stmt->bindValue(':who', $who, \PDO::PARAM_STR);
+      $stmt->bindValue(':id', $entryId, \PDO::PARAM_STR);
+      if ($stmt->execute() === true) {
+        $added = true;
+      } else {
+        $errors_[] = \LXS\CCL\_t('sql.error.update').': <code>'.get_sql_error($stmt).'</code>';
       }
       $stmt->closeCursor();
     }
@@ -58,11 +91,11 @@
             .' WHERE time < NOW() - INTERVAL :days DAY';
       $stmt = $db_->prepare($sql);
       if ($stmt === false) {
-        $errors_[] = _tr('sql.error.prepare').': <code>'.get_sql_error($db_).'</code>';
+        $errors_[] = \LXS\CCL\_t('sql.error.prepare').': <code>'.get_sql_error($db_).'</code>';
       } else {
         $stmt->bindValue(':days', ENTRY_LOG_DAYS, \PDO::PARAM_INT);
         if ($stmt->execute() === false) {
-          $errors_[] = _tr('sql.error.query').': <code>'.get_sql_error($stmt).'</code>';
+          $errors_[] = \LXS\CCL\_t('sql.error.query').': <code>'.get_sql_error($stmt).'</code>';
         }
         $stmt->closeCursor();
       }
@@ -77,11 +110,11 @@
     $sql = 'DELETE FROM '.DB_TABLE_PREFIX.'contact_log WHERE entry_id=:id';
     $stmt = $db_->prepare($sql);
     if ($stmt === false) {
-      $errors_[] = _tr('sql.error.prepare').': <code>'.get_sql_error($db_).'</code>';
+      $errors_[] = \LXS\CCL\_t('sql.error.prepare').': <code>'.get_sql_error($db_).'</code>';
     } else {
       $stmt->bindValue(':id', $entryId, \PDO::PARAM_INT);
       if ($stmt->execute() === false) {
-        $errors_[] = _tr('sql.error.query').': <code>'.get_sql_error($stmt).'</code>';
+        $errors_[] = \LXS\CCL\_t('sql.error.query').': <code>'.get_sql_error($stmt).'</code>';
       } else {
         $success = true;
 
@@ -99,11 +132,11 @@
     $stmt = $db_->prepare($sql);
     $entry = false;
     if ($stmt === false) {
-      $errors_[] = _tr('sql.error.prepare').': <code>'.get_sql_error($db_).'</code>';
+      $errors_[] = \LXS\CCL\_t('sql.error.prepare').': <code>'.get_sql_error($db_).'</code>';
     } else {
       $stmt->bindValue(':id', $entryId, \PDO::PARAM_INT);
       if ($stmt->execute() === false || ($entry = $stmt->fetchAll(\PDO::FETCH_ASSOC)) === false) {
-        $errors_[] = _tr('sql.error.query').': <code>'.get_sql_error($stmt).'</code>';
+        $errors_[] = \LXS\CCL\_t('sql.error.query').': <code>'.get_sql_error($stmt).'</code>';
       }
       $stmt->closeCursor();
     }
@@ -121,11 +154,11 @@
            .' ORDER BY time DESC';
     $stmt = $db_->prepare($sql);
     if ($stmt === false) {
-      $errors_[] = _tr('sql.error.prepare').': <code>'.get_sql_error($db_).'</code>';
+      $errors_[] = \LXS\CCL\_t('sql.error.prepare').': <code>'.get_sql_error($db_).'</code>';
     } else {
       $stmt->bindValue(':days', $lastDays, \PDO::PARAM_INT);
       if ($stmt->execute() === false || ($results = $stmt->fetchAll(\PDO::FETCH_ASSOC)) === false) {
-        $errors_[] = _tr('sql.error.query').': <code>'.get_sql_error($stmt).'</code>';
+        $errors_[] = \LXS\CCL\_t('sql.error.query').': <code>'.get_sql_error($stmt).'</code>';
       }
       $stmt->closeCursor();
     }

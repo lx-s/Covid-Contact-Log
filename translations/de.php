@@ -13,6 +13,7 @@
     'sql.error.query' => 'Fehler beim Abfragen der Datenbank',
     'sql.error.insert' => 'Fehler beim Hinzufügen des Eintrags',
     'sql.error.update' => 'Fehler beim Aktualisieren des Eintrags',
+    'sql.error.invalid.date' => 'Falsches Zeitformat',
     'sql.success.added' => 'Eintrag hinzugefügt!',
 
     // index.php
@@ -49,8 +50,15 @@
     // edit.php
     'edit.title' => 'Eintrag bearbeiten',
     'edit.intro' => 'Hier kann der angelegten Eintrag bearbeitet werden.',
+    'edit.date.label' => 'Datum',
+    'edit.time.label' => 'Zeitpunkt',
+    'edit.who.label' => 'Wen?',
+    'edit.error.forgot.date' => 'Bitte ein Datum eingeben',
+    'edit.error.forgot.time' => 'Bitte eine Zeit eingeben',
+    'edit.error.forgot.who' => 'Bitte ein Person eingeben',
     'edit.btn.confirm' => 'Speichern',
     'edit.btn.decline' => 'Abbrechen',
+    'edit.btn.delete' => 'Stattdessen Eintrag löschen',
 
     // tools/create_user.php
     'tool.create_user.form.title' => 'Erzeuge neuen Benutzer-Eintrag',

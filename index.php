@@ -99,7 +99,7 @@
                $lastDay = $date['day'];
             }
             if ($editMode) {
-              echo '<li><a class="delete-link" href="delete.php?entryId='.$e['entry_id'].'">'.$e['who'].'</a></li>';
+              echo '<li><a class="delete-link" href="edit.php?entryId='.$e['entry_id'].'">'.$e['who'].'</a></li>';
             } else {
               echo '<li>'.$e['who'].'</li>';
             }

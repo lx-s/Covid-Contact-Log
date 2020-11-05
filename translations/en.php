@@ -13,6 +13,7 @@
     'sql.error.query' => 'Failed to query database',
     'sql.error.insert' => 'Failed to insert entry into database',
     'sql.error.update' => 'Failed to update entry',
+    'sql.error.invalid.date' => 'Wrong date/time format',
     'sql.success.added' => 'Entry added!',
 
     // index.php
@@ -49,8 +50,15 @@
     // edit.php
     'edit.title' => 'Edit entry',
     'edit.intro' => 'Here you may edit this entry.',
+    'edit.date.label' => 'Date',
+    'edit.time.label' => 'Time',
+    'edit.who.label' => 'Who',
+    'edit.error.forgot.date' => 'Please enter a date',
+    'edit.error.forgot.time' => 'Please enter a time',
+    'edit.error.forgot.who' => 'Please enter who you\'ve met',
     'edit.btn.confirm' => 'Save',
     'edit.btn.decline' => 'Cancel',
+    'edit.btn.delete' => 'Delete entry instead',
 
     // tools/create_user.php
     'tool.create_user.form.title' => 'Generate User Entry',

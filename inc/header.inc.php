@@ -31,7 +31,7 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css?v=2020110501">
   <title><?php
     if ($pageTitle != '') {
       echo $pageTitle.' &bull; ';

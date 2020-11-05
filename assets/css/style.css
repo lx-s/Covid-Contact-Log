@@ -163,7 +163,6 @@ input {
   background-color: #fff;
   padding: 10px 20px;
   -webkit-appearance: none;
-  font-size: 14px;
 }
 
 .input-field {
@@ -186,6 +185,7 @@ label {
 
 input[type="date"],
 input[type="text"],
+input[type="time"],
 input[type="password"] {
   box-sizing: border-box;
   color: #404045;
@@ -220,6 +220,7 @@ input[type="submit"]:hover {
 
 .mode-switch > a {
   padding: 4px 6px;
+  margin-bottom: 6px;
   border: 1px solid #bd976f;
   border-radius: 10px;
 }
@@ -364,6 +365,7 @@ input[type="submit"]:hover {
   .input-field {
     display: block;
   }
+
   .content-wrapper {
     padding-left: 10px;
     padding-right: 10px,

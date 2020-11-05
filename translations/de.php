@@ -17,7 +17,7 @@
 
     // index.php
     'main.title' => 'Index',
-    'main.export_as_csv' => 'Export as CSV',
+    'main.export_as_csv' => 'CSV Export',
     'main.add_entry.title' => 'Jemanden getroffen?',
     'main.add_entry.who.label' => 'Wen?',
     'main.add_entry.who.placeholder' => 'Name(n) der Person(en)',

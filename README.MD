@@ -1,3 +1,7 @@
+> :warning: **This project is no longer maintained**: Since the government-paid-for app "CoronaWarnApp" provides a contact-book functionality, this app is no longer maintained by me. Thank you to everyone who used it and helped me develop it further.
+
+
+
 # :family: Covid-19 Contact-Log
 
 Covid-Contact-Log is a simple, self-hosted log-tool for ...
